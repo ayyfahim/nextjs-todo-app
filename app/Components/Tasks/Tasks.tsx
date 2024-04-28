@@ -10,9 +10,10 @@ import Modal from "../Modals/Modal";
 interface Props {
   title: string;
   tasks: any[];
+  permaDelete?: boolean;
 }
 
-function Tasks({ title, tasks }: Props) {
+function Tasks({ title, tasks, permaDelete }: Props) {
   const { theme, isLoading, openModal, modal } = useGlobalState();
 
   return (
@@ -34,6 +35,7 @@ function Tasks({ title, tasks }: Props) {
             isCompleted={task.isCompleted}
             isImportant={task.isImportant}
             id={task.id}
+            permaDelete={permaDelete}
           />
         ))}
         <button className="create-task" onClick={openModal}>

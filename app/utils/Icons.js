@@ -25,3 +25,4 @@ export const admin = <i className="fa-solid fa-lock"></i>;
 export const linked = <i className="fa-brands fa-linkedin"></i>;
 export const mailIcon = <i className="fa-solid fa-envelope"></i>;
 export const plus = <i className="fa-solid fa-plus fa-beat-fade"></i>;
+export const rotate = <i className="fa-solid fa-rotate"></i>;

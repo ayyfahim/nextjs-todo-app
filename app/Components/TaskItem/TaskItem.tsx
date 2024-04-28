@@ -1,6 +1,6 @@
 "use client";
 import { useGlobalState } from "@/app/context/globalProvider";
-import { edit, trash } from "@/app/utils/Icons";
+import { edit, trash, rotate } from "@/app/utils/Icons";
 import React, { useState } from "react";
 import styled from "styled-components";
 import formatDate from "@/app/utils/formatDate";
@@ -14,10 +14,11 @@ interface Props {
   isCompleted: boolean;
   isImportant: boolean;
   id: string;
+  permaDelete?: boolean;
 }
 
-function TaskItem({ title, description, date, isCompleted, isImportant, id }: Props) {
-  const { theme, deleteTask, updateTask } = useGlobalState();
+function TaskItem({ title, description, date, isCompleted, isImportant, id, permaDelete }: Props) {
+  const { theme, deleteTask, updateTask, permaDeleteTask, restoreDeletedTask } = useGlobalState();
   const [modal, setModal] = useState(false);
   const openModal = () => {
     setModal(true);
@@ -62,11 +63,23 @@ function TaskItem({ title, description, date, isCompleted, isImportant, id }: Pr
             Incomplete
           </button>
         )}
+        {permaDelete ? <button className="restore" onClick={() => {
+            restoreDeletedTask(id);
+          }}>{rotate}</button> : <></>}
         <button className="edit" onClick={openModal}>{edit}</button>
         <button
           className="delete"
           onClick={() => {
-            deleteTask(id);
+            if (permaDelete) {
+              permaDeleteTask(id);
+              return;
+            }
+            const task = {
+                id,
+                isCompleted: !isCompleted,
+              };
+
+            deleteTask(task);
           }}
         >
           {trash}
