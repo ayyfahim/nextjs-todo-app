@@ -8,8 +8,9 @@ import menu from "@/app/utils/menu";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "../Button/Button";
-import { arrowLeft, bars, logout } from "@/app/utils/Icons";
+import { arrowLeft, bars, logout, sun, moon } from "@/app/utils/Icons";
 import { UserButton, useClerk, useUser } from "@clerk/nextjs";
+import Toggle from "../Button/Toggle";
 
 function Sidebar() {
   const { theme, collapsed, collapseMenu } = useGlobalState();
@@ -65,6 +66,7 @@ function Sidebar() {
         })}
       </ul>
       <div className="sign-out relative m-6">
+        <Toggle />
         <Button
           name={"Sign Out"}
           type={"submit"}

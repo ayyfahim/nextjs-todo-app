@@ -5,15 +5,16 @@ import styled from "styled-components";
 
 interface Props {
   content: React.ReactNode;
+  closeModalP?: any;
 }
 
-function Modal({ content }: Props) {
+function Modal({ content, closeModalP }: Props) {
   const { closeModal } = useGlobalState();
 
   const { theme } = useGlobalState();
   return (
     <ModalStyled theme={theme}>
-      <div className="modal-overlay" onClick={closeModal}></div>
+      <div className="modal-overlay" onClick={closeModalP ? closeModalP : closeModal}></div>
       <div className="modal-content">{content}</div>
     </ModalStyled>
   );

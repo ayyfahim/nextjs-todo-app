@@ -1,22 +1,34 @@
 "use client";
 import { useGlobalState } from "@/app/context/globalProvider";
 import { edit, trash } from "@/app/utils/Icons";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import formatDate from "@/app/utils/formatDate";
+import Modal from "../Modals/Modal";
+import EditContent from "../Modals/EditContent";
 
 interface Props {
   title: string;
   description: string;
   date: string;
   isCompleted: boolean;
+  isImportant: boolean;
   id: string;
 }
 
-function TaskItem({ title, description, date, isCompleted, id }: Props) {
+function TaskItem({ title, description, date, isCompleted, isImportant, id }: Props) {
   const { theme, deleteTask, updateTask } = useGlobalState();
+  const [modal, setModal] = useState(false);
+  const openModal = () => {
+    setModal(true);
+  };
+  const closeModal = () => {
+    setModal(false);
+  };
+
   return (
     <TaskItemStyled theme={theme}>
+      {modal && <Modal closeModalP={closeModal} content={<EditContent titleP={title} dateP={date} descriptionP={description} isCompleted={isCompleted} id={id} isImportant={isImportant} />} />}
       <h1>{title}</h1>
       <p>{description}</p>
       <p className="date">{formatDate(date)}</p>
@@ -50,7 +62,7 @@ function TaskItem({ title, description, date, isCompleted, id }: Props) {
             Incomplete
           </button>
         )}
-        <button className="edit">{edit}</button>
+        <button className="edit" onClick={openModal}>{edit}</button>
         <button
           className="delete"
           onClick={() => {

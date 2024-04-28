@@ -20,6 +20,10 @@ export const GlobalProvider = ({ children }) => {
 
   const theme = themes[selectedTheme];
 
+  const toggleTheme = () => {
+    setSelectedTheme(selectedTheme ? 0 : 1);
+  }
+
   const openModal = () => {
     setModal(true);
   };
@@ -88,6 +92,8 @@ export const GlobalProvider = ({ children }) => {
     <GlobalContext.Provider
       value={{
         theme,
+        selectedTheme,
+        toggleTheme,
         tasks,
         deleteTask,
         isLoading,
