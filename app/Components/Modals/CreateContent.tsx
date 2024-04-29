@@ -7,10 +7,23 @@ import styled from "styled-components";
 import Button from "../Button/Button";
 import { add, plus } from "@/app/utils/Icons";
 
-function CreateContent() {
+function CreateContent({dateP = ""}) {
+  console.log('dateP', dateP)
+  
+  const convertDateFormat = () => {
+    if (!dateP) {
+      return "";
+    }
+    const dateObj = new Date(dateP);
+    const year = dateObj.getFullYear();
+    let month = (dateObj.getMonth() + 1).toString().padStart(2, '0');
+    let day = dateObj.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(convertDateFormat);
   const [completed, setCompleted] = useState(false);
   const [important, setImportant] = useState(false);
 
@@ -66,6 +79,8 @@ function CreateContent() {
       console.log(error);
     }
   };
+
+  console.log('date', date)
 
   return (
     <CreateContentStyled onSubmit={handleSubmit} theme={theme}>

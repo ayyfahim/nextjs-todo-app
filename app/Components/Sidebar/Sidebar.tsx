@@ -8,12 +8,12 @@ import menu from "@/app/utils/menu";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Button from "../Button/Button";
-import { arrowLeft, bars, logout, sun, moon } from "@/app/utils/Icons";
+import { arrowLeft, bars, logout, sun, moon, calendar } from "@/app/utils/Icons";
 import { UserButton, useClerk, useUser } from "@clerk/nextjs";
 import Toggle from "../Button/Toggle";
 
 function Sidebar() {
-  const { theme, collapsed, collapseMenu } = useGlobalState();
+  const { theme, collapsed, collapseMenu, openCalendarModal } = useGlobalState();
   const { signOut } = useClerk();
 
   const { user } = useUser();
@@ -64,6 +64,14 @@ function Sidebar() {
             </li>
           );
         })}
+
+        <li
+          className={`nav-item`}
+          onClick={() => openCalendarModal()}
+        >
+          {calendar}
+          Calendar
+        </li>
       </ul>
       <div className="sign-out relative m-6">
         <Toggle />

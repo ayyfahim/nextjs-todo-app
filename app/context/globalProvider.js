@@ -14,6 +14,7 @@ export const GlobalProvider = ({ children }) => {
   const [selectedTheme, setSelectedTheme] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [modal, setModal] = useState(false);
+  const [calendarModal, setCalendarModal] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
   const [tasks, setTasks] = useState([]);
@@ -31,6 +32,14 @@ export const GlobalProvider = ({ children }) => {
 
   const closeModal = () => {
     setModal(false);
+  };
+
+  const openCalendarModal = () => {
+    setCalendarModal(true);
+  };
+
+  const closeCalendarModal = () => {
+    setCalendarModal(false);
   };
 
   const collapseMenu = () => {
@@ -156,6 +165,9 @@ export const GlobalProvider = ({ children }) => {
         modal,
         openModal,
         closeModal,
+        calendarModal,
+        openCalendarModal,
+        closeCalendarModal,
         allTasks,
         allDeletedTasks,
         restoreDeletedTask,

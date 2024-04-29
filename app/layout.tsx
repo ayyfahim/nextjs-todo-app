@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import { ClerkProvider, auth } from "@clerk/nextjs";
 
 import "./globals.css";
+import "react-datepicker/dist/react-datepicker.css";
 import Sidebar from "./Components/Sidebar/Sidebar";
 import GlobalStyleProvider from "./providers/GlobalStyleProvider";
 import ContextProvider from "./providers/ContextProvider";

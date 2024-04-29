@@ -19,6 +19,7 @@
     "nextjs-toploader": "^1.5.3",
     "prisma": "^5.4.2",
     "react": "^18",
+    "react-datepicker": "^6.9.0",
     "react-dom": "^18",
     "react-hot-toast": "^2.4.1",
     "styled-components": "^6.1.0"

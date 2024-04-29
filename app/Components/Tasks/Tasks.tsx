@@ -6,6 +6,7 @@ import CreateContent from "../Modals/CreateContent";
 import TaskItem from "../TaskItem/TaskItem";
 import { add, plus } from "@/app/utils/Icons";
 import Modal from "../Modals/Modal";
+import CalendarModal from "../Modals/Calendar";
 
 interface Props {
   title: string;
@@ -14,11 +15,13 @@ interface Props {
 }
 
 function Tasks({ title, tasks, permaDelete }: Props) {
-  const { theme, isLoading, openModal, modal } = useGlobalState();
+  const { theme, isLoading, openModal, modal, calendarModal, closeCalendarModal } = useGlobalState();
 
   return (
     <TaskStyled theme={theme}>
+      {/* <DatePicker selected={new Date()} toggleCalendarOnIconClick /> */}
       {modal && <Modal content={<CreateContent />} />}
+      {calendarModal && <Modal closeModalP={closeCalendarModal} content={<CalendarModal />} />}
       <h1>{title}</h1>
 
       <button className="btn-rounded" onClick={openModal}>
