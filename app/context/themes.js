@@ -44,6 +44,7 @@ const themes = [
     colorIcons3: "rgba(249,249,249, 0.08)",
     colorIcons4: "rgba(0,0,0, 0.3)",
     marLRSm: "0 1rem",
+    titleColor: "#fff"
   },
   {
     name: "light",
@@ -126,6 +127,7 @@ const themes = [
     colorIcons3: "rgba(249,249,249, 0.08)",
     colorIcons4: "rgba(0,0,0, 0.3)",
     marLRSm: "0 1rem",
+    titleColor: "#181818"
   },
 ];
 export default themes;

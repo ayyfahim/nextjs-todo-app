@@ -153,6 +153,10 @@ const SidebarStyled = styled.nav<{ collapsed: boolean }>`
     }
   }
 
+  .capitalize {
+    color: ${(props) => props.theme.titleColor};
+  }
+
   .profile {
     margin: 1.5rem;
     padding: 1rem 0.8rem;

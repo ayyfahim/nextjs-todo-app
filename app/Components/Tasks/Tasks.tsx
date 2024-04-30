@@ -58,6 +58,7 @@ const TaskStyled = styled.main`
   border: 2px solid ${(props) => props.theme.borderColor2};
   border-radius: 1rem;
   height: 100%;
+  color: ${(props) => props.theme.titleColor};
 
   overflow-y: auto;
 
